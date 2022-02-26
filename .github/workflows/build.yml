@@ -220,9 +220,9 @@ jobs:
 
         # 编辑镜像
 
-        sudo chmod +x ./rebuild-5.15.y.sh
+        sudo chmod +x ./rebuild.sh
 
-        sudo ./rebuild-5.15.y.sh
+        sudo ./rebuild.sh
 
         echo "镜像编辑完成"
 

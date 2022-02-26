@@ -1,15 +1,15 @@
 #!/bin/bash
+WORK_DIR=$(pwd)
 origin="Rock64"
 target="Chainedbox"
-WORK_DIR=$(pwd)
-echo "$WORK_DIR"
+
 mount_point="tmp"
-kernel=
-DTB=dtbs/5.15.y-bsp
+
+DTB=dtbs
 IDB=loader/idbloader.bin
 UBOOT=loader/uboot.img
 TRUST=loader/trust.bin
-
+echo 当前工作目录："$WORK_DIR"
 echo -e "01.01 读取镜像"
 #设置镜像路径
 imgdir=./build/output/images/
