@@ -126,6 +126,9 @@ dd if=${IDB} of=${imgfile} seek=64 bs=512 conv=notrunc status=none && echo "idb 
 dd if=${UBOOT} of=${imgfile} seek=16384 bs=512 conv=notrunc status=none && echo "uboot patched: ${UBOOT}" 成功 || { echo "u-boot patch 失败"; exit 1; }
 dd if=${TRUST} of=${imgfile} seek=24576 bs=512 conv=notrunc status=none && echo "trust patched: ${TRUST}" 成功 || { echo "trust patch 失败"; exit 1; }
 
+rm -rf $imgdir/*.sha
+rm -rf $imgdir/*.txt
+
 imgname_new=`basename $imgfile | sed "s/${origin}/${target}/"`
 echo "新文件名: $imgname_new"
 mv $imgfile ${imgdir}/${imgname_new}
