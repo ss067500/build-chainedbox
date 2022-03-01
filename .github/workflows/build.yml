@@ -48,7 +48,7 @@ on:
 
         required: false
 
-        default: 'l1pro'
+        default: 'rock64'
 
       armbianbranch:
 
@@ -56,7 +56,7 @@ on:
 
         required: false
 
-        default: 'current'
+        default: 'edge'
 
       armbianrelease:
 

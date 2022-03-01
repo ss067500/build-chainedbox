@@ -98,12 +98,20 @@ echo "进入 CHROOT 模式更新系统组件"
 
 chroot $mount_point <<EOF
 su
-systemctl enable pwm-fan.service
-apt-mark hold linux-dtb-legacy-rockchip64 linux-image-legacy-rockchip64 linux-dtb-current-rockchip64 linux-image-current-rockchip64 linux-dtb-edge-rockchip64 linux-image-edge-rockchip64
-#锁定内核文件，防止升级的时候 我家云 的专用内核被通用内核替换导致不开机
 
+echo:启动风扇服务
+systemctl enable pwm-fan.service
+
+echo: 锁定内核文件，防止升级的时候 我家云 的专用内核被通用内核替换导致不开机
+apt-mark hold linux-dtb-legacy-rockchip64 linux-image-legacy-rockchip64 linux-dtb-current-rockchip64 linux-image-current-rockchip64 linux-dtb-edge-rockchip64 linux-image-edge-rockchip64
+
+echo: 取消休眠机制
+systemctl status sleep.target suspend.target hibernate.target hybrid-sleep.target
+
+echo:修改时区为东八区
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
 	dpkg-reconfigure --frontend noninteractive tzdata
+echo:完成 退出 CHROOT 模式
 exit
 EOF
 sync
@@ -114,9 +122,9 @@ umount -f $mount_point
 
 echo "添加引导项： idb,uboot,trust"
 
-dd if=${IDB} of=${imgfile} seek=64 bs=512 conv=notrunc status=none && echo "idb patched: ${IDB}" || { echo "idb patch failed!"; exit 1; }
-dd if=${UBOOT} of=${imgfile} seek=16384 bs=512 conv=notrunc status=none && echo "uboot patched: ${UBOOT}" || { echo "u-boot patch failed!"; exit 1; }
-dd if=${TRUST} of=${imgfile} seek=24576 bs=512 conv=notrunc status=none && echo "trust patched: ${TRUST}" || { echo "trust patch failed!"; exit 1; }
+dd if=${IDB} of=${imgfile} seek=64 bs=512 conv=notrunc status=none && echo "idb patched: ${IDB}" 成功 || { echo "idb patch 失败"; exit 1; }
+dd if=${UBOOT} of=${imgfile} seek=16384 bs=512 conv=notrunc status=none && echo "uboot patched: ${UBOOT}" 成功 || { echo "u-boot patch 失败"; exit 1; }
+dd if=${TRUST} of=${imgfile} seek=24576 bs=512 conv=notrunc status=none && echo "trust patched: ${TRUST}" 成功 || { echo "trust patch 失败"; exit 1; }
 
 imgname_new=`basename $imgfile | sed "s/${origin}/${target}/"`
 echo "新文件名: $imgname_new"
