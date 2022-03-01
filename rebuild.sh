@@ -106,7 +106,7 @@ echo: 锁定内核文件，防止升级的时候 我家云 的专用内核被通
 apt-mark hold linux-dtb-legacy-rockchip64 linux-image-legacy-rockchip64 linux-dtb-current-rockchip64 linux-image-current-rockchip64 linux-dtb-edge-rockchip64 linux-image-edge-rockchip64
 
 echo: 取消休眠机制
-systemctl status sleep.target suspend.target hibernate.target hybrid-sleep.target
+sudo systemctl mask sleep.targetsuspend.target hibernate.target hybrid-sleep.target sleep.target suspend.target
 
 echo:修改时区为东八区
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
