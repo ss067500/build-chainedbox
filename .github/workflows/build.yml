@@ -238,7 +238,7 @@ jobs:
 
         echo "::set-output name=status::success"
 
-    - name: 上传 Armbian 镜像到 Actions
+    - name: 上传 ${{ env.FILE_NAME }} 镜像到 Actions
 
       uses: kittaakos/upload-artifact-as-is@master
 
@@ -248,7 +248,7 @@ jobs:
 
         path: ${{ env.FILEPATH }}/
 
-    - name: 上传 Armbian 镜像到 Release
+    - name: 上传 ${{ env.ARMBIAN_BOARD }} 镜像到 Release
 
       uses: softprops/action-gh-release@v1
 
