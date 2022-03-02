@@ -12,7 +12,7 @@
 
 #===============================================
 
-name: Build Armbian For Chainedbox 5.15.y
+name: Build Armbian For Chainedbox
 
 on:
 
@@ -56,7 +56,7 @@ on:
 
         required: false
 
-        default: 'edge'
+        default: 'current'
 
       armbianrelease:
 
@@ -230,7 +230,11 @@ jobs:
 
         echo "FILEPATH=$PWD" >> $GITHUB_ENV
 
+        echo "FILE_NAME=$(basename *.img .img)" >> $GITHUB_ENV
+
         echo "FILE_DATE=$(date +"%Y.%m.%d.%H%M")" >> $GITHUB_ENV
+
+
 
         echo "::set-output name=status::success"
 
@@ -256,7 +260,7 @@ jobs:
 
       with:
 
-        tag_name: Armbian-trunk_Chainedbox_5.15.y_${{ env.FILE_DATE }}
+        tag_name: ${{ env.FILE_NAME }}_${{ env.FILE_DATE }}
 
         files: ${{ env.FILEPATH }}/*
 

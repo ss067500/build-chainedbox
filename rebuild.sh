@@ -71,7 +71,7 @@ sed -i 's#${prefix}dtb/${fdtfile}#${prefix}/${fdtfile}#' $mount_point/boot/boot.
 mkimage -C none -T script -d $mount_point/boot/boot.cmd $mount_point/boot/boot.scr
 
 # patch rootfs
-echo "patch rootfs"
+echo "修改为国内软件源"
 cat > $mount_point/etc/apt/sources.list <<EOF
 deb [arch=arm64,armhf] https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free
 deb [arch=arm64,armhf] https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free
@@ -87,10 +87,10 @@ sed -i 's/ENABLED=true/#ENABLED=true/' $mount_point/etc/default/armbian-zram-con
 sed -i 's/ENABLED=true/#ENABLED=true/' $mount_point/etc/default/armbian-ramlog
 rm -f $mount_point/etc/systemd/system/getty.target.wants/serial-getty\@ttyS2.service
 ln -sf /usr/share/zoneinfo/Asia/Shanghai $mount_point/etc/localtime
-sed -i 's/Rock 64/chainedbox/' $mount_point/etc/armbian-image-release
-sed -i 's/rock64/chainedbox/' $mount_point/etc/armbian-image-release
-sed -i 's/rock64/chainedbox/' $mount_point/etc/armbian-release
-sed -i 's/Rock 64/chainedbox/' $mount_point/etc/armbian-release
+sed -i 's/Rock 64/Chainedbox/' $mount_point/etc/armbian-image-release
+sed -i 's/rock64/Chainedbox/' $mount_point/etc/armbian-image-release
+sed -i 's/rock64/Chainedbox/' $mount_point/etc/armbian-release
+sed -i 's/Rock 64/Chainedbox/' $mount_point/etc/armbian-release
 sed -i 's/rock64/Chainedbox/' $mount_point/etc/hostname
 sync
 
@@ -99,19 +99,19 @@ echo "进入 CHROOT 模式更新系统组件"
 chroot $mount_point <<EOF
 su
 
-echo:启动风扇服务
+echo "启动风扇服务"
 systemctl enable pwm-fan.service
 
-echo: 锁定内核文件，防止升级的时候 我家云 的专用内核被通用内核替换导致不开机
+echo "锁定内核文件，防止升级的时候 我家云 的专用内核被通用内核替换导致不开机"
 apt-mark hold linux-dtb-legacy-rockchip64 linux-image-legacy-rockchip64 linux-dtb-current-rockchip64 linux-image-current-rockchip64 linux-dtb-edge-rockchip64 linux-image-edge-rockchip64
 
-echo: 取消休眠机制
+echo "取消休眠"
 sudo systemctl mask sleep.targetsuspend.target hibernate.target hybrid-sleep.target sleep.target suspend.target
 
-echo:修改时区为东八区
+echo "修改时区为东八区"
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
 	dpkg-reconfigure --frontend noninteractive tzdata
-echo:完成 退出 CHROOT 模式
+echo "完成 退出 CHROOT 模式"
 exit
 EOF
 sync
@@ -133,6 +133,7 @@ imgname_new=`basename $imgfile | sed "s/${origin}/${target}/"`
 echo "新文件名: $imgname_new"
 mv $imgfile ${imgdir}/${imgname_new}
 rm -rf ${tmpdir}
+
 
 losetup -D
 blkid
