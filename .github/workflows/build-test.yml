@@ -212,13 +212,12 @@ jobs:
 
         cd ./build/output/images/ && sudo gzip *.img
         
-        ls
         
         echo "FILEPATH=$PWD" >> $GITHUB_ENV
 
         FILE_ADDRESS="$(ls ${PWD}/*.img)"
 
-        FILE_NAME="basename $FILE_ADDRESS .img"
+        FILE_NAME="basename ${FILE_ADDRESS} .img"
 
         echo "FILE_DATE=$(date +"%Y.%m.%d.%H%M")" >> $GITHUB_ENV
 
@@ -234,7 +233,7 @@ jobs:
 
         path: ${{ env.FILEPATH }}/
 
-    - name: 上传 $FILE_NAME 镜像到 Release
+    - name: 上传 ${FILE_NAME} 镜像到 Release
 
       uses: softprops/action-gh-release@v1
 
@@ -246,7 +245,7 @@ jobs:
 
       with:
 
-        tag_name: $FILE_NAME_${{ env.FILE_DATE }}
+        tag_name: ${FILE_NAME}_${{ env.FILE_DATE }}
 
         files: ${{ env.FILEPATH }}/*
 
