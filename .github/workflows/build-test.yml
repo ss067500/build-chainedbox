@@ -227,7 +227,7 @@ jobs:
 
         echo "::set-output name=status::success"
 
-    - name: 上传 $FILE_NAME 镜像到 Actions
+    - name: 上传 ${{ env.FILE_NAME}} 镜像到 Actions
 
       uses: kittaakos/upload-artifact-as-is@master
 
@@ -249,7 +249,7 @@ jobs:
 
       with:
 
-        tag_name: ${{ env.FILE_NAME}}_${{ env.FILE_DATE }}
+        tag_name: Armbian-trunk_Chainedbox_${{ env.ARMBIAN_RELEASE }}_${{ env.ARMBIAN_BRANCH }}_${{ env.FILE_DATE }}
 
         files: ${{ env.FILEPATH }}/*
 
