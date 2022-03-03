@@ -228,13 +228,7 @@ jobs:
 
         cd ./build/output/images/ && sudo gzip *.img
         
-        ls
-        
         echo "FILEPATH=$PWD" >> $GITHUB_ENV
-
-        echo "FILE_ADDRESS=$(ls $PWD/*.img)" >> $GITHUB_ENV
-
-        echo "FILE_NAME=$(basename $FILE_ADDRESS .img)" >> $GITHUB_ENV
 
         echo "FILE_DATE=$(date +"%Y.%m.%d.%H%M")" >> $GITHUB_ENV
 
@@ -262,7 +256,7 @@ jobs:
 
       with:
 
-        tag_name: ${{ env.FILE_NAME }}_${{ env.FILE_DATE }}
+        tag_name: Armbian-trunk_Chainedbox_${{ env.ARMBIAN_RELEASE }}_${{ env.ARMBIAN_BRANCH }}_${{ env.FILE_DATE }}
 
         files: ${{ env.FILEPATH }}/*
 
