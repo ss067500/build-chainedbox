@@ -172,9 +172,6 @@ jobs:
 
         git clone --depth 1 https://github.com/armbian/build.git build
 
-        #sudo cp -r ./config ./build
-
-        #sudo cp -r ./userpatches ./build
 
     
 
