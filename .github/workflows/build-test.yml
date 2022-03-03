@@ -218,7 +218,7 @@ jobs:
 
         FILE_ADDRESS="$(ls ${PWD}/*.img)"
 
-        FILE_NAME=‘basename $FILE_ADDRESS .img‘
+        FILE_NAME="basename $FILE_ADDRESS .img"
 
         echo "FILE_DATE=$(date +"%Y.%m.%d.%H%M")" >> $GITHUB_ENV
 
