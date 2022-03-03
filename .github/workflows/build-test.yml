@@ -215,7 +215,7 @@ jobs:
         
         echo "FILEPATH=$PWD" >> $GITHUB_ENV
 
-        FILE_ADDRESS="$(ls ${PWD}/*.img)"
+        FILE_ADDRESS="$(ls ./*.img)"
 
         FILE_NAME="basename ${FILE_ADDRESS} .img"
 
