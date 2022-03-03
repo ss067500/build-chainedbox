@@ -186,7 +186,7 @@ jobs:
 
         sudo touch ./output/images/Armbian8.8.8-test-L1pro-edge-bullseye.img
 
-
+        ls ./output/images/
 
         echo "::set-output name=status::success"
 
@@ -210,7 +210,7 @@ jobs:
 
         echo "镜像编辑完成"
 
-        cd ./build/output/images/ && sudo gzip *.img
+        cd ./build/output/images/
         
         
         echo "FILEPATH=$PWD" >> $GITHUB_ENV
