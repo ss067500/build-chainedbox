@@ -56,7 +56,16 @@ cp -v ${WORK_DIR}/$DTB/*.dtb $mount_point/boot/
 echo -e "完成"
 
 
+
+echo "写入 bootloader ..."
+echo "dd if=${UBOOT_WITH_FIP}  of=${BLK_DEV} conv=fsync,notrunc bs=512 skip=1 seek=1"
+echo "dd if=${UBOOT_WITH_FIP}  of=${BLK_DEV} conv=fsync,notrunc bs=1 count=444"
+
+dd if=${UBOOT_WITH_FIP}  of=${BLK_DEV} conv=fsync,notrunc bs=512 skip=1 seek=1
+dd if=${UBOOT_WITH_FIP}  of=${BLK_DEV} conv=fsync,notrunc bs=1 count=444
+
 sync
+echo "完成"
 
 cd ${WORK_DIR}
 
@@ -68,15 +77,6 @@ echo "添加引导项： idb,uboot,trust"
 #dd if=${UBOOT} of=${imgfile} seek=16384 bs=512 conv=notrunc status=none && echo "uboot patched: ${UBOOT}" 成功 || { echo "u-boot patch 失败"; exit 1; }
 #dd if=${TRUST} of=${imgfile} seek=24576 bs=512 conv=notrunc status=none && echo "trust patched: ${TRUST}" 成功 || { echo "trust patch 失败"; exit 1; }
 
-echo "写入 bootloader ..."
-echo "dd if=${UBOOT_WITH_FIP}  of=${imgfile} conv=fsync,notrunc bs=512 skip=1 seek=1"
-echo "dd if=${UBOOT_WITH_FIP}  of=${imgfile} conv=fsync,notrunc bs=1 count=444"
-
-dd if=${UBOOT_WITH_FIP}  of=${imgfile} conv=fsync,notrunc bs=512 skip=1 seek=1
-dd if=${UBOOT_WITH_FIP}  of=${imgfile} conv=fsync,notrunc bs=1 count=444
-
-sync
-echo "完成"
 
 rm -rf $imgdir/*.sha
 rm -rf $imgdir/*.txt

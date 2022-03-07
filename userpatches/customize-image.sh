@@ -4,7 +4,7 @@ wget -P /boot https://github.com/WingonWu/Chainedbox-build/blob/b7ac13bbc48609f4
 wget -P /root https://github.com/WingonWu/Chainedbox-build/blob/b7ac13bbc48609f4e3b24568cdd54c507027868e/l1pro/install-docker.sh
 wget -P /root https://github.com/WingonWu/Chainedbox-build/blob/b7ac13bbc48609f4e3b24568cdd54c507027868e/l1pro/install-omv.sh
 wget -P /root https://github.com/WingonWu/Chainedbox-build/blob/b7ac13bbc48609f4e3b24568cdd54c507027868e/l1pro/install-zerotier.sh
-wget -P /root https://github.com/WingonWu/Chainedbox-build/blob/b7ac13bbc48609f4e3b24568cdd54c507027868e/l1pro/install-cups.sh
+wget -P /root https://github.com/WingonWu/Chainedbox-build/blob/d5b6f45639fc35c6f09f12131bde1bbf48cd7877/l1pro/install-cups.sh
 #下载风扇服务
 wget -P /etc/systemd/system https://github.com/WingonWu/Chainedbox-build/blob/b7ac13bbc48609f4e3b24568cdd54c507027868e/l1pro/pwm-fan.service
 wget -P /usr/bin https://github.com/WingonWu/Chainedbox-build/blob/b7ac13bbc48609f4e3b24568cdd54c507027868e/l1pro/pwm-fan.pl && chmod 700 /usr/bin/pwm-fan.pl
