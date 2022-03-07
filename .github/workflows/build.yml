@@ -187,7 +187,9 @@ jobs:
         echo "fdtfile=rk3328-l1pro-1296mhz.dtb" >> ./build/config/bootenv/rockchip.txt && \
         echo "usbstoragequirks=0x05e3:0x0612:u,0x1d6b:0x0003:u,0x05e3:0x0610:u" >> ./build/config/bootenv/rockchip.txt
         cat ./build/config/bootenv/rockchip.txt
-
+        
+        echo "ls"
+        ls
 
     - name: SSH连接到 Actions @ Ctrl+C 确定, Ctrl+D 退出
 
