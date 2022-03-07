@@ -1,5 +1,0 @@
-verbosity=7
-rootflags=rw
-extraargs=usbcore.autosuspend=-1
-extraboardargs=
-fdtfile=/dtb/rockchip/rk3328-l1pro-1296mhz.dtb
