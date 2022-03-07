@@ -92,6 +92,8 @@ sed -i 's/rock64/Chainedbox/' $mount_point/etc/armbian-image-release
 sed -i 's/rock64/Chainedbox/' $mount_point/etc/armbian-release
 sed -i 's/Rock 64/Chainedbox/' $mount_point/etc/armbian-release
 sed -i 's/rock64/Chainedbox/' $mount_point/etc/hostname
+sed -i 's/rock64/Chainedbox/' $mount_point/etc/host
+
 sync
 
 echo "进入 CHROOT 模式更新系统组件"
