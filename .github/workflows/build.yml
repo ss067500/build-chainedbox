@@ -44,11 +44,11 @@ on:
 
       armbianboard:
 
-        description: '设置机型： [Chainedbox/rock64]'
+        description: '设置机型： [chainedbox/rock64]'
 
         required: false
 
-        default: 'Chainedbox'
+        default: 'chainedbox'
 
       armbianbranch:
 
@@ -112,7 +112,7 @@ jobs:
 
         else
 
-           ARMBIAN_BOARD=Chainedbox
+           ARMBIAN_BOARD=chainedbox
 
         fi
 
