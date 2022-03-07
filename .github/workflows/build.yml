@@ -44,7 +44,7 @@ on:
 
       armbianboard:
 
-        description: '设置机型： [ l1pro / Chainedbox /rock64 ]'
+        description: '设置机型： [Chainedbox/rock64]'
 
         required: false
 
