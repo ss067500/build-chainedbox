@@ -178,7 +178,8 @@ jobs:
         sed -i 's/0x9000000/0x39000000/' ./build/config/bootscripts/boot-rockchip64.cmd && \
         sed -i 's#${prefix}dtb/${fdtfile}#${prefix}/${fdtfile}#' ./build/config/bootscripts/boot-rockchip64.cmd && \
         sed -i 's/verbosity "1"/verbosity "7"/' ./build/config/bootscripts/boot-rockchip64.cmd && \
-        sed -e '/setenv rootfstype "ext4"/a setenv rootflags "rw"' ./build/config/bootscripts/bootenv/armbianEnv.txt && \
+
+        sed -e '/setenv rootfstype "ext4"/a setenv rootflags "rw"' ./build/config/bootenv/armbianEnv.txt && \
         echo "extraargs=usbcore.autosuspend=-1" >> ./build/config/bootenv/armbianEnv.txt && \
         echo "extraboardargs=" >> ./build/config/bootenv/armbianEnv.txt && \
         echo "fdtfile=rk3328-l1pro-1296mhz.dtb" >> ./build/config/bootenv/armbianEnv.txt && \
