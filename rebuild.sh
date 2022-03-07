@@ -9,7 +9,7 @@ DTB=dtbs
 IDB=loader/idbloader.bin
 UBOOT=loader/uboot.img
 TRUST=loader/trust.bin
-UBOOT_WITH_FIP=/loader/btld-rk3328.bin
+UBOOT_WITH_FIP=loader/btld-rk3328.bin
 echo 当前工作目录："$WORK_DIR"
 echo -e "01.01 读取镜像"
 #设置镜像路径

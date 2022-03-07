@@ -34,12 +34,12 @@ ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
 echo Etc/UTC > /etc/timezone
 
 # 修改 Hostname
-sed -i 's/Rock 64/Chainedbox/' /etc/armbian-image-release
-sed -i 's/rock64/Chainedbox/' /etc/armbian-image-release
-sed -i 's/rock64/Chainedbox/' /etc/armbian-release
-sed -i 's/Rock 64/Chainedbox/' /etc/armbian-release
-sed -i 's/rock64/Chainedbox/' /etc/hostname
-sed -i 's/rock64/Chainedbox/' /etc/host
+#sed -i 's/Rock 64/Chainedbox/' /etc/armbian-image-release
+#sed -i 's/rock64/Chainedbox/' /etc/armbian-image-release
+#sed -i 's/rock64/Chainedbox/' /etc/armbian-release
+#sed -i 's/Rock 64/Chainedbox/' /etc/armbian-release
+#sed -i 's/rock64/Chainedbox/' /etc/hostname
+#sed -i 's/rock64/Chainedbox/' /etc/host
 
 #修改镜像源
 echo "修改为国内软件源"
