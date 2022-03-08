@@ -1,8 +1,26 @@
-Index: b/arch/arm64/boot/dts/rockchip/Makefile
-===================================================================
+From ae2b0e0fb2c7cc7d47fd847edc79b0746f8dc4aa Mon Sep 17 00:00:00 2001
+From: Wingon Wu <wingonwu@outlook.com>
+Date: Tue, 8 Mar 2022 15:50:07 +0800
+Subject: [PATCH] =?UTF-8?q?=E2=80=98update2=E2=80=99?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ arch/arm64/boot/dts/rockchip/Makefile         |   3 +
+ .../rockchip/rk3328-chainedbox-1296mhz.dts    | 622 ++++++++++++++++++
+ .../rockchip/rk3328-chainedbox-1392mhz.dts    |  15 +
+ .../rockchip/rk3328-chainedbox-1512mhz.dts    |  19 +
+ 4 files changed, 659 insertions(+)
+ create mode 100755 arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1296mhz.dts
+ create mode 100755 arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1392mhz.dts
+ create mode 100755 arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1512mhz.dts
+
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 7fdb41de0..0c3b66983 100644
 --- a/arch/arm64/boot/dts/rockchip/Makefile
 +++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -11,6 +11,9 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1
+@@ -11,6 +11,9 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2s.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock64.dtb
@@ -12,8 +30,9 @@ Index: b/arch/arm64/boot/dts/rockchip/Makefile
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock-pi-e.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-roc-cc.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-evb-act8846.dtb
-Index: b/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1296mhz.dts
-===================================================================
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1296mhz.dts b/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1296mhz.dts
+new file mode 100755
+index 000000000..feebc3ab5
 --- /dev/null
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1296mhz.dts
 @@ -0,0 +1,622 @@
@@ -639,8 +658,9 @@ Index: b/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1296mhz.dts
 +	};
 +
 +};
-Index: b/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1392mhz.dts
-===================================================================
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1392mhz.dts b/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1392mhz.dts
+new file mode 100755
+index 000000000..cda0da4e2
 --- /dev/null
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1392mhz.dts
 @@ -0,0 +1,15 @@
@@ -659,8 +679,9 @@ Index: b/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1392mhz.dts
 +	};
 +
 +};
-Index: b/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1512mhz.dts
-===================================================================
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1512mhz.dts b/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1512mhz.dts
+new file mode 100755
+index 000000000..a4f9c1733
 --- /dev/null
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1512mhz.dts
 @@ -0,0 +1,19 @@
@@ -683,3 +704,6 @@ Index: b/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1512mhz.dts
 +	};
 +
 +};
+-- 
+2.25.1
+
