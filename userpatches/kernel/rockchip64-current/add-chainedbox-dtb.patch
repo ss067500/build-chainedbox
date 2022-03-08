@@ -670,7 +670,7 @@ index 000000000..cda0da4e2
 + */
 +
 +/dts-v1/;
-+#include "rk3328-l1pro-1296mhz.dts"
++#include "rk3328-chainedbox-1296mhz.dts"
 +
 +&cpu0_opp_table {
 +
@@ -691,7 +691,7 @@ index 000000000..a4f9c1733
 + */
 +
 +/dts-v1/;
-+#include "rk3328-l1pro-1296mhz.dts"
++#include "rk3328-chainedbox-1296mhz.dts"
 +
 +&cpu0_opp_table {
 +
