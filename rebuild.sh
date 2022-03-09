@@ -13,7 +13,7 @@ UBOOT_WITH_FIP=mods/loader/btld-rk3328.bin
 echo 当前工作目录："$WORK_DIR"
 echo -e "01.01 读取镜像"
 #设置镜像路径
-imgdir=./build/output/images/
+imgdir=./build/output/images
 imgfile="$(ls ${imgdir}/*.img)"
 echo "找到镜像: $imgfile"
 
