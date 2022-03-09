@@ -5,11 +5,11 @@ target="Chainedbox"
 
 mount_point="tmp"
 
-DTB=dtbs
-IDB=loader/idbloader.bin
-UBOOT=loader/uboot.img
-TRUST=loader/trust.bin
-UBOOT_WITH_FIP=loader/btld-rk3328.bin
+DTB=mods/boot
+IDB=mods/loader/idbloader.bin
+UBOOT=mods/loader/uboot.img
+TRUST=mods/loader/trust.bin
+UBOOT_WITH_FIP=mods/loader/btld-rk3328.bin
 echo 当前工作目录："$WORK_DIR"
 echo -e "01.01 读取镜像"
 #设置镜像路径

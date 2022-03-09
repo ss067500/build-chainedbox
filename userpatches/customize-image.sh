@@ -1,21 +1,16 @@
 #!/bin/bash
 #对镜像进行一些定制操作
-wget -P /boot https://github.com/WingonWu/Chainedbox-build/blob/b7ac13bbc48609f4e3b24568cdd54c507027868e/dtbs/rk3328-l1pro-1512mhz.dtb
-wget -P /root https://github.com/WingonWu/Chainedbox-build/blob/b7ac13bbc48609f4e3b24568cdd54c507027868e/l1pro/install-docker.sh
-wget -P /root https://github.com/WingonWu/Chainedbox-build/blob/b7ac13bbc48609f4e3b24568cdd54c507027868e/l1pro/install-omv.sh
-wget -P /root https://github.com/WingonWu/Chainedbox-build/blob/b7ac13bbc48609f4e3b24568cdd54c507027868e/l1pro/install-zerotier.sh
-wget -P /root https://github.com/WingonWu/Chainedbox-build/blob/d5b6f45639fc35c6f09f12131bde1bbf48cd7877/l1pro/install-cups.sh
+wget -P /boot/1 https://raw.githubusercontent.com/WingonWu/Chainedbox-build/main/mods/boot/*.dtb
+wget -P /root https://raw.githubusercontent.com/WingonWu/Chainedbox-build/main/mods/root/*.sh && chmod 755 /root/*.sh
 #下载风扇服务
-wget -P /etc/systemd/system https://github.com/WingonWu/Chainedbox-build/blob/b7ac13bbc48609f4e3b24568cdd54c507027868e/l1pro/pwm-fan.service
-wget -P /usr/bin https://github.com/WingonWu/Chainedbox-build/blob/b7ac13bbc48609f4e3b24568cdd54c507027868e/l1pro/pwm-fan.pl && chmod 700 /usr/bin/pwm-fan.pl
+wget -P /etc/systemd/system https://raw.githubusercontent.com/WingonWu/Chainedbox-build/main/mods/pwm-fan.service
+wget -P /usr/bin https://raw.githubusercontent.com/WingonWu/Chainedbox-build/main/mods/pwm-fan.pl && chmod 700 /usr/bin/pwm-fan.pl
 #启动风扇服务
 systemctl enable pwm-fan.service
 
 #锁定内核文件，防止升级的时候 我家云 的专用内核被通用内核替换导致不开机 
 apt-mark hold linux-dtb-legacy-rockchip64 linux-image-legacy-rockchip64 linux-dtb-current-rockchip64 linux-image-current-rockchip64 linux-dtb-edge-rockchip64 linux-image-edge-rockchip64
 
-#取消休眠
-sudo systemctl mask sleep.targetsuspend.target hibernate.target hybrid-sleep.target sleep.target suspend.target
 
 sed -i 's/ENABLED=true/#ENABLED=true/' /etc/default/armbian-zram-config
 sed -i 's/ENABLED=true/#ENABLED=true/' /etc/default/armbian-ramlog
