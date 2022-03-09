@@ -61,8 +61,8 @@ echo "写入 bootloader ..."
 echo "dd if=${UBOOT_WITH_FIP}  of=${BLK_DEV} conv=fsync,notrunc bs=512 skip=1 seek=1"
 echo "dd if=${UBOOT_WITH_FIP}  of=${BLK_DEV} conv=fsync,notrunc bs=1 count=444"
 
-dd if=${UBOOT_WITH_FIP}  of=${BLK_DEV} conv=fsync,notrunc bs=512 skip=1 seek=1
-dd if=${UBOOT_WITH_FIP}  of=${BLK_DEV} conv=fsync,notrunc bs=1 count=444
+#dd if=${UBOOT_WITH_FIP}  of=${BLK_DEV} conv=fsync,notrunc bs=512 skip=1 seek=1
+#dd if=${UBOOT_WITH_FIP}  of=${BLK_DEV} conv=fsync,notrunc bs=1 count=444
 
 sync
 echo "完成"
@@ -73,9 +73,9 @@ umount -f $mount_point
 
 echo "添加引导项： idb,uboot,trust"
 
-#dd if=${IDB} of=${imgfile} seek=64 bs=512 conv=notrunc status=none && echo "idb patched: ${IDB}" 成功 || { echo "idb patch 失败"; exit 1; }
-#dd if=${UBOOT} of=${imgfile} seek=16384 bs=512 conv=notrunc status=none && echo "uboot patched: ${UBOOT}" 成功 || { echo "u-boot patch 失败"; exit 1; }
-#dd if=${TRUST} of=${imgfile} seek=24576 bs=512 conv=notrunc status=none && echo "trust patched: ${TRUST}" 成功 || { echo "trust patch 失败"; exit 1; }
+dd if=${IDB} of=${imgfile} seek=64 bs=512 conv=notrunc status=none && echo "idb patched: ${IDB}" 成功 || { echo "idb patch 失败"; exit 1; }
+dd if=${UBOOT} of=${imgfile} seek=16384 bs=512 conv=notrunc status=none && echo "uboot patched: ${UBOOT}" 成功 || { echo "u-boot patch 失败"; exit 1; }
+dd if=${TRUST} of=${imgfile} seek=24576 bs=512 conv=notrunc status=none && echo "trust patched: ${TRUST}" 成功 || { echo "trust patch 失败"; exit 1; }
 
 
 rm -rf $imgdir/*.sha
