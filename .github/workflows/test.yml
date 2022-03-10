@@ -12,7 +12,7 @@
 
 #===============================================
 
-name: Build Armbian For Chainedbox
+name: test
 
 on:
 
@@ -216,7 +216,7 @@ jobs:
 
       with:
 
-        path: ${{ env.FILEPATH }}/
+        path: ${{ env.FILEPATH }}/  ..${{ env.FILEPATH }}/debs/*.deb
 
     - name: 上传 Chainedbox_${{ env.ARMBIAN_RELEASE }}_${{ env.ARMBIAN_BRANCH }} 镜像到 Release
 
@@ -232,7 +232,7 @@ jobs:
 
         tag_name: Armbian-trunk_Chainedbox_${{ env.ARMBIAN_RELEASE }}_${{ env.ARMBIAN_BRANCH }}_${{ env.FILE_DATE }}
 
-        files: ${{ env.FILEPATH }}/* ../${{ env.FILEPATH }}/debs/*.deb
+        files: ${{ env.FILEPATH }}/* ..${{ env.FILEPATH }}/debs/*.deb
         
 
 
