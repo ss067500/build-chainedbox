@@ -216,7 +216,7 @@ jobs:
 
       with:
 
-        path: ${{ env.FILEPATH }}/  ..${{ env.FILEPATH }}/debs/*.deb
+        path: ${{ env.FILEPATH }}/
 
     - name: 上传 Chainedbox_${{ env.ARMBIAN_RELEASE }}_${{ env.ARMBIAN_BRANCH }} 镜像到 Release
 
@@ -245,6 +245,28 @@ jobs:
             默认用户名: root
 
             默认密码: 1234
+
+    - name: 上传 Chainedbox_${{ env.ARMBIAN_RELEASE }}_${{ env.ARMBIAN_BRANCH }} 镜像到 Release
+
+      uses: softprops/action-gh-release@v1
+
+      if: steps.build.outputs.status == 'success'
+
+      env:
+
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      with:
+
+        tag_name: Armbian-trunk_Chainedbox_${{ env.ARMBIAN_RELEASE }}_${{ env.ARMBIAN_BRANCH }}_${{ env.FILE_DATE }}
+
+        files: ..${{ env.FILEPATH }}/debs/*.deb
+        
+
+
+        body: |
+
+        内核头文件
 
     - name: 删除旧版本
 
