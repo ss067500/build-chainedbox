@@ -12,7 +12,7 @@ wget -P /usr/bin https://raw.githubusercontent.com/wingonwu/build-chainedbox/mai
 systemctl enable pwm-fan.service
 
 #锁定内核文件，防止升级的时候 我家云 的专用内核被通用内核替换导致不开机 
-apt-mark hold linux-dtb-legacy-rockchip64 linux-image-legacy-rockchip64 linux-dtb-current-rockchip64 linux-image-current-rockchip64 linux-dtb-edge-rockchip64 linux-image-edge-rockchip64
+apt-mark hold linux-dtb-legacy-rockchip64 linux-image-legacy-rockchip64 linux-dtb-current-rockchip64 linux-image-current-rockchip64 linux-dtb-edge-rockchip64 linux-image-edge-rockchip64 linux-u-boot-*-legacy linux-u-boot-*-current linux-u-boot-*-edge
 
 
 sed -i 's/ENABLED=true/#ENABLED=true/' /etc/default/armbian-zram-config

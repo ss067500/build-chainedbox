@@ -148,15 +148,6 @@ jobs:
 
         
 
-        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-
-        sudo -E apt-get -qq update
-
-        sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-2004)
-
-        sudo -E apt-get -qq autoremove --purge
-
-        sudo -E apt-get -qq clean
 
         sudo timedatectl set-timezone "$TZ"
 
@@ -170,26 +161,12 @@ jobs:
 
       run: |
 
-        git clone --depth 1 https://github.com/armbian/build.git build
-
-        sudo cp -r ./config ./build
-        sudo cp -r ./userpatches ./build
-
-        sed -i 's/0x9000000/0x39000000/' ./build/config/bootscripts/boot-rockchip64.cmd && \
-        sed -i 's#${prefix}dtb/${fdtfile}#${prefix}/${fdtfile}#' ./build/config/bootscripts/boot-rockchip64.cmd && \
-        #sed -i 's/verbosity "1"/verbosity "7"/' ./build/config/bootscripts/boot-rockchip64.cmd && \
-        sed -i '/setenv rootfstype "ext4"/a setenv rootflags "rw"' ./build/config/bootscripts/boot-rockchip64.cmd && \
-        cat ./build/config/bootscripts/boot-rockchip64.cmd
-
-        #sed -i 's/verbosity=1/verbosity=7/' ./build/config/bootenv/rockchip.txt && \
-        #echo "extraargs=usbcore.autosuspend=-1" >> ./build/config/bootenv/rockchip.txt && \
-        #echo "extraboardargs=" >> ./build/config/bootenv/rockchip.txt && \
-        #echo "usbstoragequirks=0x05e3:0x0612:u,0x1d6b:0x0003:u,0x05e3:0x0610:u" >> ./build/config/bootenv/rockchip.txt
-        cat ./build/config/bootenv/rockchip.txt
         
-        echo "ls"
-        ls
-
+        mkdir -P ./build/output/images/
+        touch ./build/output/images/123.img
+        mkdir -P ./build/output/debs/
+        touch ./build/output/debs/123.deb
+        touch ./build/output/debs/234.deb
     - name: SSH连接到 Actions @ Ctrl+C 确定, Ctrl+D 退出
 
       uses: P3TERX/ssh2actions@main
@@ -210,11 +187,6 @@ jobs:
 
         cd build/
 
-        sudo chmod +x compile.sh
-
-        sudo ./compile.sh  BOARD=${{ env.ARMBIAN_BOARD }} BRANCH=${{ env.ARMBIAN_BRANCH }}  RELEASE=${{ env.ARMBIAN_RELEASE }}  BUILD_MINIMAL=no BUILD_DESKTOP=no KERNEL_ONLY=no KERNEL_CONFIGURE=no COMPRESS_OUTPUTIMAGE=sha,img EXTRAWIFI=yes
-
-        [ -e ./.config ] && cp -f ./.config ./output/images/.config
 
         echo "::set-output name=status::success"
 
@@ -227,12 +199,6 @@ jobs:
       run: |
 
         # 编辑镜像
-
-        sudo chmod +x ./rebuild.sh
-
-        sudo ./rebuild.sh
-
-        echo "镜像编辑完成"
 
         cd ./build/output/images/ && sudo gzip *.img
         
