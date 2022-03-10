@@ -236,7 +236,7 @@ jobs:
 
         cd ./build/output/images/ && sudo gzip *.img
 
-        mv ../debs/*.deb ./
+        sudo mv ../debs/*.deb ./
 
         echo "FILEPATH=$PWD" >> $GITHUB_ENV
 
