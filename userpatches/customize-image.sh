@@ -1,13 +1,13 @@
 #!/bin/bash
 #对镜像进行一些定制操作
-wget -P /boot https://raw.githubusercontent.com/WingonWu/build-chainedbox/main/mods/boot/rk3328-l1pro-1296mhz.dtb
-wget -P/root https://raw.githubusercontent.com/WingonWu/build-chainedbox/main/mods/root/install-cups.sh && chmod 755 /root/*.sh
-wget -P/root https://raw.githubusercontent.com/WingonWu/build-chainedbox/main/mods/root/install-docker.sh && chmod 755 /root/*.sh
-wget -P/root https://raw.githubusercontent.com/WingonWu/build-chainedbox/main/mods/root/install-omv.sh && chmod 755 /root/*.sh
-wget -P/root https://raw.githubusercontent.com/WingonWu/build-chainedbox/main/mods/root/install-zerotier.sh && chmod 755 /root/*.sh
+wget -P /boot https://raw.githubusercontent.com/wingonwu/build-chainedbox/main/mods/boot/rk3328-l1pro-1296mhz.dtb
+wget -P/root https://raw.githubusercontent.com/wingonwu/build-chainedbox/main/mods/root/install-cups.sh && chmod 755 /root/*.sh
+wget -P/root https://raw.githubusercontent.com/wingonwu/build-chainedbox/main/mods/root/install-docker.sh && chmod 755 /root/*.sh
+wget -P/root https://raw.githubusercontent.com/wingonwu/build-chainedbox/main/mods/root/install-omv.sh && chmod 755 /root/*.sh
+wget -P/root https://raw.githubusercontent.com/wingonwu/build-chainedbox/main/mods/root/install-zerotier.sh && chmod 755 /root/*.sh
 #下载风扇服务
-wget -P /etc/systemd/system https://raw.githubusercontent.com/WingonWu/build-chainedbox/main/mods/pwm-fan.service
-wget -P /usr/bin https://raw.githubusercontent.com/WingonWu/build-chainedbox/main/mods/pwm-fan.pl && chmod 700 /usr/bin/pwm-fan.pl
+wget -P /etc/systemd/system https://raw.githubusercontent.com/wingonwu/build-chainedbox/main/mods/pwm-fan.service
+wget -P /usr/bin https://raw.githubusercontent.com/wingonwu/build-chainedbox/main/mods/pwm-fan.pl && chmod 700 /usr/bin/pwm-fan.pl
 #启动风扇服务
 systemctl enable pwm-fan.service
 
