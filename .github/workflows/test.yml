@@ -163,10 +163,14 @@ jobs:
 
         
         mkdir -p ./build/output/images/
-        touch ./build/output/images/123.img
+        touch ./build/output/images/12a3.img
         mkdir -p ./build/output/debs/
-        touch ./build/output/debs/123.deb
-        touch ./build/output/debs/234.deb
+        wget -P ./build/output/debs https://raw.githubusercontent.com/wingonwu/build-chainedbox/main/mods/boot/rk3328-l1pro-1296mhz.dtb
+        cp ./build/output/debs/rk3328-l1pro-1296mhz.dtb ./build/output/debs/rk3328-l1pro-1296mhz.deb
+        mv ./build/output/debs/rk3328-l1pro-1296mhz.dtb ./build/output/debs/rk3328-l1pro-1359mhz.deb
+
+        touch ./build/output/debs/12a3.deb
+        touch ./build/output/debs/23a4.deb
     - name: SSH连接到 Actions @ Ctrl+C 确定, Ctrl+D 退出
 
       uses: P3TERX/ssh2actions@main
