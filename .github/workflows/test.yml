@@ -162,9 +162,9 @@ jobs:
       run: |
 
         
-        mkdir -P ./build/output/images/
+        mkdir -p ./build/output/images/
         touch ./build/output/images/123.img
-        mkdir -P ./build/output/debs/
+        mkdir -p ./build/output/debs/
         touch ./build/output/debs/123.deb
         touch ./build/output/debs/234.deb
     - name: SSH连接到 Actions @ Ctrl+C 确定, Ctrl+D 退出
