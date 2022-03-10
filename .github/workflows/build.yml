@@ -177,15 +177,14 @@ jobs:
 
         sed -i 's/0x9000000/0x39000000/' ./build/config/bootscripts/boot-rockchip64.cmd && \
         sed -i 's#${prefix}dtb/${fdtfile}#${prefix}/${fdtfile}#' ./build/config/bootscripts/boot-rockchip64.cmd && \
-        sed -i 's/verbosity "1"/verbosity "7"/' ./build/config/bootscripts/boot-rockchip64.cmd && \
+        #sed -i 's/verbosity "1"/verbosity "7"/' ./build/config/bootscripts/boot-rockchip64.cmd && \
         sed -i '/setenv rootfstype "ext4"/a setenv rootflags "rw"' ./build/config/bootscripts/boot-rockchip64.cmd && \
         cat ./build/config/bootscripts/boot-rockchip64.cmd
 
-        sed -i 's/verbosity=1/verbosity=7/' ./build/config/bootenv/rockchip.txt && \
-        echo "extraargs=usbcore.autosuspend=-1" >> ./build/config/bootenv/rockchip.txt && \
-        echo "extraboardargs=" >> ./build/config/bootenv/rockchip.txt && \
-        echo "fdtfile=rk3328-l1pro-1296mhz.dtb" >> ./build/config/bootenv/rockchip.txt && \
-        echo "usbstoragequirks=0x05e3:0x0612:u,0x1d6b:0x0003:u,0x05e3:0x0610:u" >> ./build/config/bootenv/rockchip.txt
+        #sed -i 's/verbosity=1/verbosity=7/' ./build/config/bootenv/rockchip.txt && \
+        #echo "extraargs=usbcore.autosuspend=-1" >> ./build/config/bootenv/rockchip.txt && \
+        #echo "extraboardargs=" >> ./build/config/bootenv/rockchip.txt && \
+        #echo "usbstoragequirks=0x05e3:0x0612:u,0x1d6b:0x0003:u,0x05e3:0x0610:u" >> ./build/config/bootenv/rockchip.txt
         cat ./build/config/bootenv/rockchip.txt
         
         echo "ls"
@@ -226,10 +225,6 @@ jobs:
       if: steps.build.outputs.status == 'success'
 
       run: |
-
-        # sudo chmod +x kernel.sh
-
-        # sudo ./kernel.sh
 
         # 编辑镜像
 
