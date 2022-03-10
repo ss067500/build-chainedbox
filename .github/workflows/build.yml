@@ -266,7 +266,7 @@ jobs:
 
         tag_name: Armbian-trunk_Chainedbox_${{ env.ARMBIAN_RELEASE }}_${{ env.ARMBIAN_BRANCH }}_${{ env.FILE_DATE }}
 
-        files: ${{ env.FILEPATH }}/* ../${{ env.FILEPATH }}/debs/*.deb
+        files: ${{ env.FILEPATH }}/*
         
 
 
