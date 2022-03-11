@@ -214,7 +214,7 @@ jobs:
 
         sudo ./compile.sh  BOARD=${{ env.ARMBIAN_BOARD }} BRANCH=${{ env.ARMBIAN_BRANCH }}  RELEASE=${{ env.ARMBIAN_RELEASE }} USE_MAINLINE_GOOGLE_MIRROR=yes BUILD_MINIMAL=no BUILD_DESKTOP=no INSTALL_KSRC=yes KERNEL_ONLY=no KERNEL_CONFIGURE=no COMPRESS_OUTPUTIMAGE=sha,img EXTRAWIFI=yes
 
-        [ -e ./.config ] && cp -f ./.config ./output/images/.config
+        [ -e ./.config ] && cp -f ./.config ./output/images/${{ env.ARMBIAN_BOARD }}.config
 
         echo "::set-output name=status::success"
 
