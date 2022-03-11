@@ -1,9 +1,0 @@
-[Unit]
-Description=PWM fan auto speed daemon
-After=network.target
-
-[Service]
-ExecStart=/usr/bin/pwm-fan.pl
-
-[Install]
-WantedBy=multi-user.target
