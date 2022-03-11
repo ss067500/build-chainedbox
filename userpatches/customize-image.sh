@@ -14,7 +14,9 @@ systemctl enable pwm-fan.service
 #锁定内核文件，防止升级的时候 我家云 的专用内核被通用内核替换导致不开机 
 apt-mark hold linux-dtb-legacy-rockchip64 linux-image-legacy-rockchip64 linux-dtb-current-rockchip64 linux-image-current-rockchip64 linux-dtb-edge-rockchip64 linux-image-edge-rockchip64 linux-u-boot-*-legacy linux-u-boot-*-current linux-u-boot-*-edge
 
+apt-get update&&apt-get -y upgrade
 
+apt-get -y install usb_modeswitch ca-certificates apt-transport-https
 sed -i 's/ENABLED=true/#ENABLED=true/' /etc/default/armbian-zram-config
 sed -i 's/ENABLED=true/#ENABLED=true/' /etc/default/armbian-ramlog
 rm -f /etc/systemd/system/getty.target.wants/serial-getty\@ttyS2.service
@@ -52,8 +54,6 @@ cat > /etc/apt/sources.list.d/armbian.list <<- EOF
 deb [arch=arm64,armhf] https://mirrors.tuna.tsinghua.edu.cn/armbian/ bullseye main bullseye-utils bullseye-desktop
 EOF
 
-#更新源
-apt-get update&&apt-get -y upgrade
 
 #清除安装包
 apt-get clean
