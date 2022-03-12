@@ -123,7 +123,7 @@ jobs:
       run: |
         cd build/
         sudo chmod +x compile.sh
-        sudo ./compile.sh BOARD=${{ env.ARMBIAN_BOARD }} BRANCH=${{ env.ARMBIAN_BRANCH }}  RELEASE=${{ env.ARMBIAN_RELEASE }} USE_MAINLINE_GOOGLE_MIRROR=yes BUILD_MINIMAL=no BUILD_DESKTOP=no BUILD_KSRC=yes INSTALL_KSRC=yes KERNEL_ONLY=no KERNEL_CONFIGURE=no BSPFREEZE=yes INSTALL_HEADERS=yes COMPRESS_OUTPUTIMAGE=img EXTRAWIFI=yes
+        sudo ./compile.sh BOARD=${{ env.ARMBIAN_BOARD }} BRANCH=${{ env.ARMBIAN_BRANCH }}  RELEASE=${{ env.ARMBIAN_RELEASE }} USE_MAINLINE_GOOGLE_MIRROR=yes BUILD_MINIMAL=no BUILD_DESKTOP=no BUILD_KSRC=yes INSTALL_KSRC=yes KERNEL_ONLY=no KERNEL_CONFIGURE=no BSPFREEZE=yes INSTALL_HEADERS=yes COMPRESS_OUTPUTIMAGE=img MAINLINE_MIRROR=google EXTRAWIFI=yes
         echo "ls 查看输出文件"
         ls ./build/output/images/
         echo "::set-output name=status::success"
