@@ -179,15 +179,17 @@ jobs:
         sed -i 's#${prefix}dtb/${fdtfile}#${prefix}/${fdtfile}#' ./build/config/bootscripts/boot-rockchip64.cmd && \
         sed -i 's/verbosity "1"/verbosity "7"/' ./build/config/bootscripts/boot-rockchip64.cmd && \
         sed -i '/setenv rootfstype "ext4"/a setenv rootflags "rw"' ./build/config/bootscripts/boot-rockchip64.cmd && \
+        echo "查看 boot-rockchip64.cmd 内容"
         cat ./build/config/bootscripts/boot-rockchip64.cmd
 
         sed -i 's/verbosity=1/verbosity=7/' ./build/config/bootenv/rockchip.txt && \
         echo "extraargs=usbcore.autosuspend=-1" >> ./build/config/bootenv/rockchip.txt && \
         echo "extraboardargs=" >> ./build/config/bootenv/rockchip.txt && \
         echo "usbstoragequirks=0x05e3:0x0612:u,0x1d6b:0x0003:u,0x05e3:0x0610:u" >> ./build/config/bootenv/rockchip.txt
+        echo "查看 rockchip.txt 内容"
         cat ./build/config/bootenv/rockchip.txt
         
-        echo "ls"
+        echo "查看当前目录文件"
         ls
 
     - name: SSH连接到 Actions @ Ctrl+C 确定, Ctrl+D 退出
@@ -212,7 +214,7 @@ jobs:
 
         sudo chmod +x compile.sh
 
-        sudo ./compile.sh  BOARD=${{ env.ARMBIAN_BOARD }} BRANCH=${{ env.ARMBIAN_BRANCH }}  RELEASE=${{ env.ARMBIAN_RELEASE }} USE_MAINLINE_GOOGLE_MIRROR=yes BUILD_MINIMAL=no BUILD_DESKTOP=no BUILD_KSRC=yes INSTALL_KSRC=yes KERNEL_ONLY=no KERNEL_CONFIGURE=no BSPFREEZE=yes INSTALL_HEADERS=yes COMPRESS_OUTPUTIMAGE=img EXTRAWIFI=yes
+        sudo ./compile.sh BOARD=${{ env.ARMBIAN_BOARD }} BRANCH=${{ env.ARMBIAN_BRANCH }}  RELEASE=${{ env.ARMBIAN_RELEASE }} USE_MAINLINE_GOOGLE_MIRROR=yes BUILD_MINIMAL=no BUILD_DESKTOP=no BUILD_KSRC=yes INSTALL_KSRC=yes KERNEL_ONLY=no KERNEL_CONFIGURE=no BSPFREEZE=yes INSTALL_HEADERS=yes COMPRESS_OUTPUTIMAGE=img EXTRAWIFI=yes
 
         cp -f ./build/output/config/*.config ./build/output/images/
         echo "ls 查看输出文件"
