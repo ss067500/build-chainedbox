@@ -12,11 +12,17 @@ wget -P /usr/bin https://raw.githubusercontent.com/wingonwu/build-chainedbox/mai
 #启动风扇服务
 systemctl enable pwm-fan.service
 
+#下载 wifi 8188gu驱动
+wget -P /root https://raw.githubusercontent.com/wingonwu/build-chainedbox/main/mods/wireless/8188gu.ko 
+install -p -m 644 /root/8188gu.ko /lib/modules/$(uname -r)/kernel/drivers/net/wireless/
+depmod -a $(uname -r)
+rm -rf /root/8188gu.ko
+
 #锁定内核文件，防止升级的时候 我家云 的专用内核被通用内核替换导致不开机 
 apt-mark hold linux-dtb-legacy-rockchip64 linux-image-legacy-rockchip64 linux-dtb-current-rockchip64 linux-image-current-rockchip64 linux-dtb-edge-rockchip64 linux-image-edge-rockchip64 linux-u-boot-*-legacy linux-u-boot-*-current linux-u-boot-*-edge
 
 apt-get update&&apt-get -y upgrade
-apt-get -y install usb_modeswitch ca-certificates apt-transport-https
+apt-get -y install ca-certificates apt-transport-https
 
 sed -i 's/ENABLED=true/#ENABLED=true/' /etc/default/armbian-zram-config
 sed -i 's/ENABLED=true/#ENABLED=true/' /etc/default/armbian-ramlog
