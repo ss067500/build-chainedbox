@@ -1,6 +1,4 @@
 #!/bin/bash
-
-echo "$(uname -r)"
 #对镜像进行一些定制操作
 wget -P /boot https://raw.githubusercontent.com/wingonwu/build-chainedbox/main/mods/boot/rk3328-l1pro-1296mhz.dtb
 wget -P/root https://raw.githubusercontent.com/wingonwu/build-chainedbox/main/mods/root/install-cups.sh && chmod 755 /root/*.sh
