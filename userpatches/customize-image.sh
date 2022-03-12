@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "$(uname -r)"
 #对镜像进行一些定制操作
 wget -P /boot https://raw.githubusercontent.com/wingonwu/build-chainedbox/main/mods/boot/rk3328-l1pro-1296mhz.dtb
 wget -P/root https://raw.githubusercontent.com/wingonwu/build-chainedbox/main/mods/root/install-cups.sh && chmod 755 /root/*.sh
@@ -15,8 +16,8 @@ systemctl enable pwm-fan.service
 apt-mark hold linux-dtb-legacy-rockchip64 linux-image-legacy-rockchip64 linux-dtb-current-rockchip64 linux-image-current-rockchip64 linux-dtb-edge-rockchip64 linux-image-edge-rockchip64 linux-u-boot-*-legacy linux-u-boot-*-current linux-u-boot-*-edge
 
 apt-get update&&apt-get -y upgrade
-
 apt-get -y install usb_modeswitch ca-certificates apt-transport-https
+
 sed -i 's/ENABLED=true/#ENABLED=true/' /etc/default/armbian-zram-config
 sed -i 's/ENABLED=true/#ENABLED=true/' /etc/default/armbian-ramlog
 rm -f /etc/systemd/system/getty.target.wants/serial-getty\@ttyS2.service
