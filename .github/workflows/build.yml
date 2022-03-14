@@ -65,21 +65,21 @@ jobs:
            ARMBIAN_BOARD=chainedbox
         fi
         echo "ARMBIAN_BOARD=${ARMBIAN_BOARD}" >> $GITHUB_ENV
-        
+
         if [ -n "${{ github.event.inputs.armbianbranch }}" ]; then
            ARMBIAN_BRANCH=${{ github.event.inputs.armbianbranch }}
         else
            ARMBIAN_BRANCH=current
         fi
         echo "ARMBIAN_BRANCH=${ARMBIAN_BRANCH}" >> $GITHUB_ENV
-        
+
         if [ -n "${{ github.event.inputs.armbianrelease }}" ]; then
            ARMBIAN_RELEASE=${{ github.event.inputs.armbianrelease }}
         else
            ARMBIAN_RELEASE=bullseye
         fi
         echo "ARMBIAN_RELEASE=${ARMBIAN_RELEASE}" >> $GITHUB_ENV
-        
+
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update
         sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-2004)
@@ -123,7 +123,7 @@ jobs:
       run: |
         cd build/
         sudo chmod +x compile.sh
-        sudo ./compile.sh BOARD=${{ env.ARMBIAN_BOARD }} BRANCH=${{ env.ARMBIAN_BRANCH }}  RELEASE=${{ env.ARMBIAN_RELEASE }} BUILD_MINIMAL=no BUILD_DESKTOP=no BUILD_KSRC=yes INSTALL_KSRC=yes KERNEL_ONLY=no KERNEL_CONFIGURE=no BSPFREEZE=yes INSTALL_HEADERS=yes COMPRESS_OUTPUTIMAGE=img DOWNLOAD_MIRROR=bfsu EXTRAWIFI=yes
+        sudo ./compile.sh BOARD=${{ env.ARMBIAN_BOARD }} BRANCH=${{ env.ARMBIAN_BRANCH }}  RELEASE=${{ env.ARMBIAN_RELEASE }} BUILD_MINIMAL=no BUILD_DESKTOP=no BUILD_KSRC=yes INSTALL_KSRC=yes KERNEL_ONLY=no KERNEL_CONFIGURE=no BSPFREEZE=yes INSTALL_HEADERS=yes COMPRESS_OUTPUTIMAGE=img DOWNLOAD_MIRROR=tuna EXTRAWIFI=yes
         echo "::set-output name=status::success"
 
     - name: 打包 Armbian for [ ${{ env.ARMBIAN_BOARD }}_${{ env.ARMBIAN_RELEASE }}_${{ env.ARMBIAN_BRANCH }} ]
