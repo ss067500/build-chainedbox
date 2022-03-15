@@ -474,7 +474,7 @@ compilation_prepare()
 		&& [ "$EXTRAWIFI" == yes ]; then
 
 		# attach to specifics tag or branch
-		local rtl8188euver="branch:master"
+		local rtl8188euver="branch:v5.7.6.1"
 
 		display_alert "Adding" "Wireless drivers for Realtek 8188EU 8188EUS and 8188ETV chipsets ${rtl8188euver}" "info"
 
@@ -520,7 +520,7 @@ compilation_prepare()
 		&& [ "$EXTRAWIFI" == yes ]; then
 
 		# attach to specifics tag or branch
-		local rtl8188GUver="branch:v5.7.6.1"
+		local rtl8188GUver="branch:master"
 
 		display_alert "Adding" "Wireless drivers for Realtek 8188GU chipsets ${rtl8188GUver}" "info"
 
