@@ -520,33 +520,33 @@ compilation_prepare()
 		&& [ "$EXTRAWIFI" == yes ]; then
 
 		# attach to specifics tag or branch
-		local rtl8188GUver="branch:master"
+		local rtl8188guver="branch:master"
 
-		display_alert "Adding" "Wireless drivers for Realtek 8188GU chipsets ${rtl8188GUver}" "info"
+		display_alert "Adding" "Wireless drivers for Realtek 8188GU chipsets ${rtl8188guver}" "info"
 
-		fetch_from_repo "$GITHUB_SOURCE/McMCCRU/rtl8188gu" "rtl8188GU" "${rtl8188GUver}" "yes"
+		fetch_from_repo "$GITHUB_SOURCE/McMCCRU/rtl8188gu" "rtl8188gu" "${rtl8188guver}" "yes"
 		cd "$kerneldir" || exit
-		rm -rf "$kerneldir/drivers/net/wireless/rtl8188GU"
-		mkdir -p "$kerneldir/drivers/net/wireless/rtl8188GU/"
-		cp -R "${SRC}/cache/sources/rtl8188GU/${rtl8188GUver#*:}"/{core,hal,include,os_dep,platform} \
-		"$kerneldir/drivers/net/wireless/rtl8188GU"
+		rm -rf "$kerneldir/drivers/net/wireless/rtl8188gu"
+		mkdir -p "$kerneldir/drivers/net/wireless/rtl8188gu/"
+		cp -R "${SRC}/cache/sources/rtl8188gu/${rtl8188guver#*:}"/{core,hal,include,os_dep,platform} \
+		"$kerneldir/drivers/net/wireless/rtl8188gu"
 
 		# Makefile
-		cp "${SRC}/cache/sources/rtl8188GU/${rtl8188GUver#*:}/Makefile" \
-		"$kerneldir/drivers/net/wireless/rtl8188GU/Makefile"
+		cp "${SRC}/cache/sources/rtl8188gu/${rtl8188guver#*:}/Makefile" \
+		"$kerneldir/drivers/net/wireless/rtl8188gu/Makefile"
 
 		# Kconfig
-		sed -i 's/---help---/help/g' "${SRC}/cache/sources/rtl8188GU/${rtl8188GUver#*:}/Kconfig"
-		cp "${SRC}/cache/sources/rtl8188GU/${rtl8188GUver#*:}/Kconfig" \
-		"$kerneldir/drivers/net/wireless/rtl8188GU/Kconfig"
+		sed -i 's/---help---/help/g' "${SRC}/cache/sources/rtl8188gu/${rtl8188guver#*:}/Kconfig"
+		cp "${SRC}/cache/sources/rtl8188gu/${rtl8188guver#*:}/Kconfig" \
+		"$kerneldir/drivers/net/wireless/rtl8188gu/Kconfig"
 
 		# Disable debug
 		sed -i "s/^CONFIG_RTW_DEBUG.*/CONFIG_RTW_DEBUG = n/" \
-		"$kerneldir/drivers/net/wireless/rtl8188GU/Makefile"
+		"$kerneldir/drivers/net/wireless/rtl8188gu/Makefile"
 
 		# Add to section Makefile
-		echo "obj-\$(CONFIG_RTL8188GU) += rtl8188GU/" >> "$kerneldir/drivers/net/wireless/Makefile"
-		sed -i '/source "drivers\/net\/wireless\/ti\/Kconfig"/a source "drivers\/net\/wireless\/rtl8188GU\/Kconfig"' \
+		echo "obj-\$(CONFIG_rtl8188gu) += rtl8188gu/" >> "$kerneldir/drivers/net/wireless/Makefile"
+		sed -i '/source "drivers\/net\/wireless\/ti\/Kconfig"/a source "drivers\/net\/wireless\/rtl8188gu\/Kconfig"' \
 		"$kerneldir/drivers/net/wireless/Kconfig"
 
 	fi
