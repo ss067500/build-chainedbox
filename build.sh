@@ -12,6 +12,7 @@ echo "下载源代码"
 	git clone --depth 1 https://github.com/armbian/build.git build
 	sudo cp -r ./config ./build
 	sudo cp -r ./userpatches ./build
+	sudo cp -r ./lib ./build
 	sed -i 's/0x9000000/0x39000000/' ./build/config/bootscripts/boot-rockchip64.cmd && \
 	sed -i 's#${prefix}dtb/${fdtfile}#${prefix}/${fdtfile}#' ./build/config/bootscripts/boot-rockchip64.cmd && \
 	sed -i 's/verbosity "1"/verbosity "7"/' ./build/config/bootscripts/boot-rockchip64.cmd && \
@@ -28,7 +29,7 @@ echo "下载源代码"
 echo "编译 Armbian "
 	cd build/
 	sudo chmod +x compile.sh
-	sudo ./compile.sh BOARD=$1 BRANCH=$2  RELEASE=$3 BUILD_MINIMAL=no BUILD_DESKTOP=no BUILD_KSRC=yes INSTALL_KSRC=yes KERNEL_ONLY=no KERNEL_CONFIGURE=no BSPFREEZE=yes INSTALL_HEADERS=yes COMPRESS_OUTPUTIMAGE=img DOWNLOAD_MIRROR=tuna EXTRAWIFI=no
+	sudo ./compile.sh BOARD=$1 BRANCH=$2  RELEASE=$3 BUILD_MINIMAL=no BUILD_DESKTOP=no BUILD_KSRC=yes INSTALL_KSRC=yes KERNEL_ONLY=no KERNEL_CONFIGURE=no BSPFREEZE=yes INSTALL_HEADERS=yes COMPRESS_OUTPUTIMAGE=img DOWNLOAD_MIRROR=tuna EXTRAWIFI=yes
 	
 echo "打包 Armbian"
 	# 编辑镜像

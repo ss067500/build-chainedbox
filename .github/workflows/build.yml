@@ -95,6 +95,7 @@ jobs:
         git clone --depth 1 https://github.com/armbian/build.git build
         sudo cp -r ./config ./build
         sudo cp -r ./userpatches ./build
+        sudo cp -r ./lib ./build
         sed -i 's/0x9000000/0x39000000/' ./build/config/bootscripts/boot-rockchip64.cmd && \
         sed -i 's#${prefix}dtb/${fdtfile}#${prefix}/${fdtfile}#' ./build/config/bootscripts/boot-rockchip64.cmd && \
         sed -i 's/verbosity "1"/verbosity "7"/' ./build/config/bootscripts/boot-rockchip64.cmd && \
