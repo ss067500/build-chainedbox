@@ -7,44 +7,44 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 ---
- arch/arm64/boot/dts/rockchip/Makefile         |   3 +
- .../rockchip/rk3328-chainedbox-1296mhz.dts    | 622 ++++++++++++++++++
- .../rockchip/rk3328-chainedbox-1392mhz.dts    |  15 +
- .../rockchip/rk3328-chainedbox-1512mhz.dts    |  19 +
+ arch/arm64/boot/dtb/rockchip/Makefile         |   3 +
+ .../rockchip/rk3328-chainedbox-1296mhz.dtb    | 622 ++++++++++++++++++
+ .../rockchip/rk3328-chainedbox-1392mhz.dtb    |  15 +
+ .../rockchip/rk3328-chainedbox-1512mhz.dtb    |  19 +
  4 files changed, 659 insertions(+)
- create mode 100755 arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1296mhz.dts
- create mode 100755 arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1392mhz.dts
- create mode 100755 arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1512mhz.dts
+ create mode 100755 arch/arm64/boot/dtb/rockchip/rk3328-chainedbox-1296mhz.dtb
+ create mode 100755 arch/arm64/boot/dtb/rockchip/rk3328-chainedbox-1392mhz.dtb
+ create mode 100755 arch/arm64/boot/dtb/rockchip/rk3328-chainedbox-1512mhz.dtb
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+diff --git a/arch/arm64/boot/dtb/rockchip/Makefile b/arch/arm64/boot/dtb/rockchip/Makefile
 index 7fdb41de0..0c3b66983 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
+--- a/arch/arm64/boot/dtb/rockchip/Makefile
++++ b/arch/arm64/boot/dtb/rockchip/Makefile
 @@ -26,6 +26,9 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2s.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock64.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-chainedbox-1296mhz.dts
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-chainedbox-1392mhz.dts
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-chainedbox-1512mhz.dts
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-chainedbox-1296mhz.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-chainedbox-1392mhz.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-chainedbox-1512mhz.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock-pi-e.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-roc-cc.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-evb-act8846.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1296mhz.dts b/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1296mhz.dts
+diff --git a/arch/arm64/boot/dtb/rockchip/rk3328-chainedbox-1296mhz.dtb b/arch/arm64/boot/dtb/rockchip/rk3328-chainedbox-1296mhz.dtb
 new file mode 100755
 index 000000000..feebc3ab5
 --- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1296mhz.dts
++++ b/arch/arm64/boot/dtb/rockchip/rk3328-chainedbox-1296mhz.dtb
 @@ -0,0 +1,622 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 + * Copyright (c) 2017 PINE64
 + */
 +
-+/dts-v1/;
++/dtb-v1/;
 +#include <dt-bindings/input/input.h>
-+#include "rk3328-dram-default-timing.dtsi"
-+#include "rk3328.dtsi"
++#include "rk3328-dram-default-timing.dtbi"
++#include "rk3328.dtbi"
 +
 +/ {
 +	model = "Chainedbox L1 Pro";
@@ -658,19 +658,19 @@ index 000000000..feebc3ab5
 +	};
 +
 +};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1392mhz.dts b/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1392mhz.dts
+diff --git a/arch/arm64/boot/dtb/rockchip/rk3328-chainedbox-1392mhz.dtb b/arch/arm64/boot/dtb/rockchip/rk3328-chainedbox-1392mhz.dtb
 new file mode 100755
 index 000000000..cda0da4e2
 --- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1392mhz.dts
++++ b/arch/arm64/boot/dtb/rockchip/rk3328-chainedbox-1392mhz.dtb
 @@ -0,0 +1,15 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 + * Copyright (c) 2017 PINE64
 + */
 +
-+/dts-v1/;
-+#include "rk3328-l1pro-1296mhz.dts"
++/dtb-v1/;
++#include "rk3328-l1pro-1296mhz.dtb"
 +
 +&cpu0_opp_table {
 +
@@ -679,19 +679,19 @@ index 000000000..cda0da4e2
 +	};
 +
 +};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1512mhz.dts b/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1512mhz.dts
+diff --git a/arch/arm64/boot/dtb/rockchip/rk3328-chainedbox-1512mhz.dtb b/arch/arm64/boot/dtb/rockchip/rk3328-chainedbox-1512mhz.dtb
 new file mode 100755
 index 000000000..a4f9c1733
 --- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-chainedbox-1512mhz.dts
++++ b/arch/arm64/boot/dtb/rockchip/rk3328-chainedbox-1512mhz.dtb
 @@ -0,0 +1,19 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 + * Copyright (c) 2017 PINE64
 + */
 +
-+/dts-v1/;
-+#include "rk3328-l1pro-1296mhz.dts"
++/dtb-v1/;
++#include "rk3328-l1pro-1296mhz.dtb"
 +
 +&cpu0_opp_table {
 +

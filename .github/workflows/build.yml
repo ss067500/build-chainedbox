@@ -29,7 +29,7 @@ on:
         required: false
         default: 'chainedbox'
       armbianbranch:
-        description: '设置版本分支： [ current / edge ]'
+        description: '设置版本分支： [ legacy / current / edge ]'
         required: false
         default: 'current'
       armbianrelease:
