@@ -1,23 +1,20 @@
-From ae2b0e0fb2c7cc7d47fd847edc79b0746f8dc4aa Mon Sep 17 00:00:00 2001
+From c7dd6599932c797aea73746bc3d60731dec1aa39 Mon Sep 17 00:00:00 2001
 From: Wingon Wu <wingonwu@outlook.com>
-Date: Tue, 8 Mar 2022 15:50:07 +0800
-Subject: [PATCH] =?UTF-8?q?=E2=80=98update2=E2=80=99?=
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Date: Wed, 16 Mar 2022 16:20:59 +0800
+Subject: [PATCH] add-chainedbod-dtb
 
 ---
  arch/arm64/boot/dts/rockchip/Makefile         |   3 +
- .../rockchip/rk3328-l1pro-1296mhz.dts    | 622 ++++++++++++++++++
- .../rockchip/rk3328-l1pro-1392mhz.dts    |  15 +
- .../rockchip/rk3328-l1pro-1512mhz.dts    |  19 +
+ .../dts/rockchip/rk3328-l1pro-1296mhz.dts     | 622 ++++++++++++++++++
+ .../dts/rockchip/rk3328-l1pro-1392mhz.dts     |  15 +
+ .../dts/rockchip/rk3328-l1pro-1512mhz.dts     |  19 +
  4 files changed, 659 insertions(+)
  create mode 100755 arch/arm64/boot/dts/rockchip/rk3328-l1pro-1296mhz.dts
  create mode 100755 arch/arm64/boot/dts/rockchip/rk3328-l1pro-1392mhz.dts
  create mode 100755 arch/arm64/boot/dts/rockchip/rk3328-l1pro-1512mhz.dts
 
 diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 7fdb41de0..0c3b66983 100644
+index 7fdb41de01ec..42905f3151c1 100644
 --- a/arch/arm64/boot/dts/rockchip/Makefile
 +++ b/arch/arm64/boot/dts/rockchip/Makefile
 @@ -26,6 +26,9 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
@@ -32,7 +29,7 @@ index 7fdb41de0..0c3b66983 100644
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-evb-act8846.dtb
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328-l1pro-1296mhz.dts b/arch/arm64/boot/dts/rockchip/rk3328-l1pro-1296mhz.dts
 new file mode 100755
-index 000000000..feebc3ab5
+index 000000000000..feebc3ab5ddb
 --- /dev/null
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-l1pro-1296mhz.dts
 @@ -0,0 +1,622 @@
@@ -660,7 +657,7 @@ index 000000000..feebc3ab5
 +};
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328-l1pro-1392mhz.dts b/arch/arm64/boot/dts/rockchip/rk3328-l1pro-1392mhz.dts
 new file mode 100755
-index 000000000..cda0da4e2
+index 000000000000..cda0da4e2d71
 --- /dev/null
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-l1pro-1392mhz.dts
 @@ -0,0 +1,15 @@
@@ -681,7 +678,7 @@ index 000000000..cda0da4e2
 +};
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328-l1pro-1512mhz.dts b/arch/arm64/boot/dts/rockchip/rk3328-l1pro-1512mhz.dts
 new file mode 100755
-index 000000000..a4f9c1733
+index 000000000000..a4f9c17331a1
 --- /dev/null
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-l1pro-1512mhz.dts
 @@ -0,0 +1,19 @@
