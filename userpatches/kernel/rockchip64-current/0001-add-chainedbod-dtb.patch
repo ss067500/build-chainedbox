@@ -5,7 +5,7 @@ Subject: [PATCH] add-chainedbod-dtb
 
 ---
  arch/arm64/boot/dts/rockchip/Makefile         |   3 +
- .../dts/rockchip/rk3328-l1pro-1296mhz.dts     | 622 ++++++++++++++++++
+ .../dts/rockchip/rk3328-l1pro-1296mhz.dts     | 618 ++++++++++++++++++
  .../dts/rockchip/rk3328-l1pro-1392mhz.dts     |  15 +
  .../dts/rockchip/rk3328-l1pro-1512mhz.dts     |  19 +
  4 files changed, 659 insertions(+)
@@ -32,7 +32,7 @@ new file mode 100755
 index 000000000000..feebc3ab5ddb
 --- /dev/null
 +++ b/arch/arm64/boot/dts/rockchip/rk3328-l1pro-1296mhz.dts
-@@ -0,0 +1,622 @@
+@@ -0,0 +1,618 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 + * Copyright (c) 2017 PINE64
@@ -333,10 +333,6 @@ index 000000000000..feebc3ab5ddb
 +
 +&dmc {
 +	center-supply = <&vdd_logic>;
-+	status = "okay";
-+};
-+
-+&rng {
 +	status = "okay";
 +};
 +
