@@ -515,9 +515,7 @@ compilation_prepare()
 
 	# Wireless drivers for Realtek 8188GU chipsets
 
-	if linux-version compare "${version}" ge 3.14 \
-		&& linux-version compare "${version}" lt 5.15 \
-		&& [ "$EXTRAWIFI" == yes ]; then
+	if linux-version compare "${version}" ge 3.14 && [ "$EXTRAWIFI" == yes ]; then
 
 		# attach to specifics tag or branch
 		local rtl8188guver="branch:master"
@@ -545,7 +543,7 @@ compilation_prepare()
 		"$kerneldir/drivers/net/wireless/rtl8188gu/Makefile"
 
 		# Add to section Makefile
-		echo "obj-\$(CONFIG_rtl8188gu) += rtl8188gu/" >> "$kerneldir/drivers/net/wireless/Makefile"
+		echo "obj-\$(CONFIG_rtl8188GU) += rtl8188gu/" >> "$kerneldir/drivers/net/wireless/Makefile"
 		sed -i '/source "drivers\/net\/wireless\/ti\/Kconfig"/a source "drivers\/net\/wireless\/rtl8188gu\/Kconfig"' \
 		"$kerneldir/drivers/net/wireless/Kconfig"
 
