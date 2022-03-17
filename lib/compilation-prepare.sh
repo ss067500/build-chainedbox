@@ -513,7 +513,7 @@ compilation_prepare()
 
 
 
-	# Wireless drivers for Realtek 8188GU chipsets
+	# Wireless drivers for Realtek 8188GU and 8710B chipsets
 
 	if linux-version compare "${version}" ge 3.14 && [ "$EXTRAWIFI" == yes ]; then
 
