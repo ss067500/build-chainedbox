@@ -9,7 +9,7 @@ echo "初始化环境"
 	sudo timedatectl set-timezone "$TZ"
 
 echo "下载源代码"
-	git clone --depth 1 https://github.com/armbian/build.git build
+	git clone -b master https://github.com/armbian/build.git build
 	sudo cp -r ./config ./build
 	sudo cp -r ./userpatches ./build
 	sudo cp -r ./lib ./build
